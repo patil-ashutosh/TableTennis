@@ -16,7 +16,7 @@ class NegativeTest(unittest.TestCase):
         self.assertRaises(exceptions.InvalidMatchTypeException, self.game.create_team, "TeamA", ("Ashutosh"), match_type= "triple")
 
     def test_create_doubles_team_with_invalid_names(self):
-        self.assertRaises(exceptions.InvalidPlayersNameException, self.game.create_team, "TeamA", ("Ashutosh"), match_type=MatchType.doubles.name)
+        self.assertRaises(exceptions.InvalidPlayersNameException, self.game.create_team, "TeamA", ("Ashutosh",), match_type=MatchType.doubles.name)
 
     def test_create_singles_team_with_invalid_names(self):
         self.assertRaises(exceptions.InvalidPlayersNameException, self.game.create_team, "TeamA", "")

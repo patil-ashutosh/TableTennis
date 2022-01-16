@@ -13,28 +13,33 @@ class Team:
 
     def add_players_to_team(self, match_type, players_name):
         if match_type == "doubles":
-            if isinstance(players_name, list) or isinstance(players_name, tuple):
-                if len(players_name)<2:
-                    msg = f"Players names :{players_name} is invalid, For doubles match 2 players must form team"
-                    raise exceptions.InvalidPlayersNameException(msg)
-                player_one, player_two = players_name[0], players_name[1]
-            else:
-                msg = f"Players names :{players_name} is invalid, For doubles match 2 players must form team"
-                raise exceptions.InvalidPlayersNameException(msg)            
+            self.validate_match_type_doubles_parameters(players_name)
             player_one, player_two = players_name
             self.players = DoublesPlayer(player_one, player_two).players_names
         elif match_type == "singles":
-            if isinstance(players_name, list) or isinstance(players_name, tuple):
-                if len(players_name)<1:
-                    msg = f"Players names :{players_name} is invalid, For singles match 1 players must form team"
-                    raise exceptions.InvalidPlayersNameException(msg)
-                players_name = players_name[0]
-            else:
-                if not players_name:
-                    raise exceptions.InvalidPlayersNameException(f"Players name: {players_name} cannot be empty")
+            self.validate_match_type_singles_parameters(players_name)
             self.players = SinglesPlayer(players_name).players_names
         else:
             raise exceptions.InvalidMatchTypeException("Match Type: "+ match_type +" is invalid")
+
+    def validate_match_type_doubles_parameters(self, players_name):
+        if isinstance(players_name, list) or isinstance(players_name, tuple):
+            if len(players_name)<2:
+                msg = f"Players names :{players_name} is invalid, For doubles match 2 players must form team"
+                raise exceptions.InvalidPlayersNameException(msg)
+            player_one, player_two = players_name[0], players_name[1]
+        else:
+            msg = f"Players names :{players_name} is invalid, For doubles match 2 players must form team"
+
+    def validate_match_type_singles_parameters(self, players_name):
+        if isinstance(players_name, list) or isinstance(players_name, tuple):
+            if len(players_name)<1:
+                msg = f"Players names :{players_name} is invalid, For singles match 1 players must form team"
+                raise exceptions.InvalidPlayersNameException(msg)
+            players_name = players_name[0]
+        else:
+            if not players_name:
+                raise exceptions.InvalidPlayersNameException(f"Players name: {players_name} cannot be empty")
 
     @property
     def name(self):

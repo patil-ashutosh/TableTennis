@@ -20,7 +20,6 @@ class Match:
         self._curr_set = 1
         self._curr_score_of_set = {}
 
-    # get count of number sets in match
     @property
     def num_of_sets_in_match(self):
         return self._num_of_sets

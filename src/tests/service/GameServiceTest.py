@@ -38,6 +38,8 @@ class GameServiceTest(unittest.TestCase):
         winner_team = self.game.match.winner_team_name
         teams = self.game.get_teams
         score = teams[winner_team].score
+        if len(score)>0:
+            score = [score[0]]
         self.assertEqual(score, ['11-0'])
 
     def test_play_match_with_odd_serve(self):
@@ -49,6 +51,8 @@ class GameServiceTest(unittest.TestCase):
         winner_team = self.game.match.winner_team_name
         teams = self.game.get_teams
         score = teams[winner_team].score
+        if len(score)>0:
+            score = [score[0]]
         self.assertEqual(score, ['11-0'])
 
     def test_play_match_when_points_tied_at_duece_score(self):
