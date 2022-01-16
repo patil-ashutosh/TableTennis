@@ -1,4 +1,3 @@
-#from models.Match import MatchType
 from models.Match import Match
 from models.Team import Team
 from models.Player import DoublesPlayer
@@ -94,7 +93,6 @@ class Game:
         is_set_completed = False
         self.service_flag = 1
         self.pool = cycle([team_one, team_two])
-        #is_have_service
         while is_set_completed is False:
             if self.check_if_deuce_exists(team_one, team_two):
                 print("Duece Points, team with two-point lead to win the game")
@@ -105,7 +103,6 @@ class Game:
             else: 
                 if self.service_flag==1:
                     self.set_service_to_team()
-                print(self.get_teams[team_one].is_have_service)
                 score_one = self.match.curr_score_of_set[team_one]; score_two=self.match.curr_score_of_set[team_two]
                 self.match.curr_score_of_set[team_one], self.match.curr_score_of_set[team_two] = self.calc_points(score_one, score_two)
                 print(f"Points after each serve: {team_one}: {self.match.curr_score_of_set[team_one]} \t {team_two}: {self.match.curr_score_of_set[team_two]}")
