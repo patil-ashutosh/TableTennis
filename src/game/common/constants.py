@@ -1,0 +1,7 @@
+from models.Match import MatchType
+
+
+DEFAULT_SETS_IN_MATCH = 1
+DEFAULT_SCORE_TO_WIN_SET = 11
+DEFAULT_MAX_SCORE_IN_SET = 21
+DEFAULT_MATCH_TYPE = MatchType.singles.name
