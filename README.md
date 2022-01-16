@@ -10,6 +10,11 @@ Assume each player winning the point randomly. If the random functions returns e
 point, if it returns odd, the second player wins the point
 Display the score and the winning player
 
+Additiona Requirements Considered In Code:
+1. Match can be Singles or Doubles
+2. In Singles there must be 1 player in team, and for Doubles there must be 2 players in team
+3. Match consists of sets, Team which will win majority sets will win match
+
 Output:
 
 Automated test run with Match with 3 sets:
